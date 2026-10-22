@@ -52,10 +52,10 @@ export class GameScreenView implements View {
 			image.on("click", onLemonClick);
 			this.lemonImage = image;
 			this.group.add(image);
+			image.x(STAGE_WIDTH/2 - 60);
+			image.y(STAGE_HEIGHT/2 - 60);
 			image.width(120);
 			image.height(120);
-			image.offsetX(60);
-			image.offsetY(60);
 		})
 
 	}
