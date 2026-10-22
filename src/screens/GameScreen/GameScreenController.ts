@@ -13,6 +13,7 @@ export class GameScreenController extends ScreenController {
 	private screenSwitcher: ScreenSwitcher;
 	private gameTimer: number | null = null;
 
+
 	private squeezeSound: HTMLAudioElement;
 
 	constructor(screenSwitcher: ScreenSwitcher) {
@@ -23,7 +24,8 @@ export class GameScreenController extends ScreenController {
 		this.view = new GameScreenView(() => this.handleLemonClick());
 
 		// TODO: Task 4 - Initialize squeeze sound audio
-		this.squeezeSound = new Audio(); // Placeholder
+		this.squeezeSound =  new Audio("../public/squeeze.mp3");
+
 	}
 
 	/**
@@ -79,6 +81,8 @@ export class GameScreenController extends ScreenController {
 		this.view.randomizeLemonPosition();
 
 		// TODO: Task 4 - Play the squeeze sound
+		this.squeezeSound.play();
+		this.squeezeSound.currentTime = 0;
 	}
 
 	/**

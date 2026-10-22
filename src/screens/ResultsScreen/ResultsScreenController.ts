@@ -26,7 +26,7 @@ export class ResultsScreenController extends ScreenController {
 		this.view = new ResultsScreenView(() => this.handlePlayAgainClick());
 
 		// TODO: Task 4 - Initialize game over sound audio
-		this.gameOverSound = new Audio(); // Placeholder
+		this.gameOverSound = new Audio("../public/gameover.mp3");
 	}
 
 	/**
@@ -51,6 +51,8 @@ export class ResultsScreenController extends ScreenController {
 		this.view.show();
 
 		// TODO: Task 4 - Play the game over sound
+		this.gameOverSound.play();
+		this.gameOverSound.currentTime = 0;
 	}
 
 	/**
@@ -58,7 +60,13 @@ export class ResultsScreenController extends ScreenController {
 	 */
 	private loadLeaderboard(): LeaderboardEntry[] {
 		// TODO: Task 5 - Load leaderboard from localStorage
-		return []; // Placeholder
+		const item = localStorage.getItem(LEADERBOARD_KEY);
+
+		if(!item){
+			return [];
+		}
+
+		return JSON.parse(item) as LeaderboardEntry[];
 	}
 
 	/**
@@ -66,6 +74,9 @@ export class ResultsScreenController extends ScreenController {
 	 */
 	private saveLeaderboard(entries: LeaderboardEntry[]): void {
 		// TODO: Task 5 - Save leaderboard to localStorage
+		const string = JSON.stringify(entries);
+
+		localStorage.setItem(LEADERBOARD_KEY, string);
 	}
 
 	/**
