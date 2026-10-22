@@ -52,7 +52,7 @@ class App implements ScreenSwitcher {
 
 		// Start with menu screen visible
 		this.menuController.getView().show();
-	}
+	}	
 
 	/**
 	 * Switch to a different screen
